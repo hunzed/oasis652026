@@ -1,0 +1,229 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "equivalentProperty": "cr:equivalentProperty",
+    "samplingRate": "cr:samplingRate",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "prov": "http://www.w3.org/ns/prov#"
+  },
+  "@type": "sc:Dataset",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "name": "OASIS-sample",
+  "alternateName": "OASIS: A Multilingual and Multimodal Dataset for Culturally Grounded Spoken Visual QA (sample)",
+  "description": "Sample of OASIS, a multilingual and multimodal dataset for culturally grounded spoken visual QA, with records covering all 18 Arabic-speaking countries. Each record pairs a culturally grounded image with multilingual descriptions and QA items (open-ended, multiple-choice, true/false) in English, MSA, Egyptian Arabic, and Levantine Arabic, with paired human-recorded and synthetic speech (English and MSA). The full curated OASIS dataset will be released at the camera-ready stage.",
+  "license": "https://spdx.org/licenses/CC-BY-NC-SA-4.0.html",
+  "url": "https://anonymous.4open.science/",
+  "distribution": [
+    {
+      "@type": "cr:FileSet",
+      "@id": "metadata-jsonl",
+      "name": "metadata-jsonl",
+      "description": "All records, one JSON object per line, one file per country.",
+      "includes": "data/*.jsonl",
+      "encodingFormat": "application/jsonlines"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "image-files",
+      "name": "image-files",
+      "description": "Images, one folder per country.",
+      "includes": "images/**/*",
+      "encodingFormat": "image/jpeg"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "audio-human-en",
+      "name": "audio-human-en",
+      "description": "Human recordings of English questions.",
+      "includes": "audio/human/en/**/*.wav",
+      "encodingFormat": "audio/wav"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "audio-human-msa",
+      "name": "audio-human-msa",
+      "description": "Human recordings of MSA questions.",
+      "includes": "audio/human/msa/**/*.wav",
+      "encodingFormat": "audio/wav"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "audio-tts-en",
+      "name": "audio-tts-en",
+      "description": "Synthetic (TTS) speech for English questions.",
+      "includes": "audio/tts/en/**/*.wav",
+      "encodingFormat": "audio/wav"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "audio-tts-msa",
+      "name": "audio-tts-msa",
+      "description": "Synthetic (TTS) speech for MSA questions.",
+      "includes": "audio/tts/msa/**/*.wav",
+      "encodingFormat": "audio/wav"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "records",
+      "name": "records",
+      "description": "One record per image with QA in four language varieties and audio references.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "records/id",
+          "name": "id",
+          "dataType": "sc:Text",
+          "source": {
+            "extract": {
+              "column": "id"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "records/image",
+          "name": "image",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "extract": {
+              "column": "image"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "records/country",
+          "name": "country",
+          "dataType": "sc:Text",
+          "source": {
+            "extract": {
+              "column": "country"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "records/category",
+          "name": "category",
+          "dataType": "sc:Text",
+          "source": {
+            "extract": {
+              "column": "category"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "records/description",
+          "name": "description",
+          "dataType": "sc:Text",
+          "source": {
+            "extract": {
+              "column": "description"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "records/open_ended",
+          "name": "open_ended",
+          "dataType": "sc:Text",
+          "source": {
+            "extract": {
+              "column": "open_ended"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "records/true_false",
+          "name": "true_false",
+          "dataType": "sc:Text",
+          "source": {
+            "extract": {
+              "column": "true_false"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "records/multiple_choice",
+          "name": "multiple_choice",
+          "dataType": "sc:Text",
+          "source": {
+            "extract": {
+              "column": "multiple_choice"
+            },
+            "fileSet": {
+              "@id": "metadata-jsonl"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

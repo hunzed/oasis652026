@@ -1,0 +1,42 @@
+{
+  "records": 1259,
+  "records_per_country": {
+    "Qatar": 226,
+    "UAE": 142,
+    "Iraq": 112,
+    "Morocco": 88,
+    "Bahrain": 87,
+    "Palestine": 83,
+    "Kuwait": 81,
+    "Algeria": 73,
+    "Syria": 73,
+    "Sudan": 56,
+    "Oman": 52,
+    "Egypt": 44,
+    "Tunisia": 44,
+    "Lebanon": 34,
+    "Libya": 28,
+    "Saudi Arabia": 21,
+    "Yemen": 14,
+    "Jordan": 1
+  },
+  "items": {
+    "open_ended": 1259,
+    "true_false": 1325,
+    "multiple_choice": 1252
+  },
+  "true_false_answer_balance": {
+    "true": 1135,
+    "false": 190
+  },
+  "languages_text": [
+    "en",
+    "msa",
+    "arz",
+    "ajp"
+  ],
+  "languages_audio": [
+    "en",
+    "msa"
+  ]
+}
